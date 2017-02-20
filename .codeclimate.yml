@@ -22,9 +22,9 @@ engines:
     enabled: true
   markdownlint:
     enabled: true
-  ratings:
-    paths:
-      - "**.js"
-      - "**.jsx"
-      - "**.css"
-      - "**.md"
+ratings:
+  paths:
+    - "**.js"
+    - "**.jsx"
+    - "**.css"
+    - "**.md"
