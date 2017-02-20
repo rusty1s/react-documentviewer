@@ -6,7 +6,6 @@
   "bugs": {
     "url": "https://github.com/rusty1s/react-documentviewer/issues",
     "email": "matthias.fey@tu-dortmund.de"
-
   },
   "license": "MIT",
   "author": {
@@ -48,6 +47,7 @@
     "react-dom": "^0.14.0 || ^15.0.0"
   },
   "dependencies": {
-    "pdfjs-dist": "^1.7.308"
+    "pdfjs-dist": "^1.7.308",
+    "react-pdf-js": "^1.0.33"
   }
 }
