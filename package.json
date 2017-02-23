@@ -39,15 +39,13 @@
   ],
   "devDependencies": {
     "pre-commit": "^1.1.3",
-    "react-dev-config": "^2.0.0",
-    "react-pattern-library": "git+https://github.com/rusty1s/react-pattern-library.git"
+    "react-dev-config": "^2.0.0"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0",
     "react-dom": "^0.14.0 || ^15.0.0"
   },
   "dependencies": {
-    "pdfjs-dist": "^1.7.308",
-    "react-pdf-js": "^1.0.33"
+    "react-pattern-library": "git+https://github.com/rusty1s/react-pattern-library.git"
   }
 }
