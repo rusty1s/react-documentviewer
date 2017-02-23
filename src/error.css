@@ -1,0 +1,21 @@
+.main {
+  background: #ccc;
+  display: flex;
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+}
+
+.link {
+  color: white;
+}
+
+.text {
+  color: white;
+}
+
+.text__link {
+  font-size: 24px;
+}

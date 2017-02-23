@@ -1,25 +1,25 @@
 import React, { PropTypes } from 'react';
 
+import ErrorMessage from './Error';
+
 import styles from './documentviewer.css';
 
-const Documentviewer = ({ url, type, width, height }) => (
-  <div style={{ width, height }}>
-    <object className={styles.main} data={url} type={type}>
-      Fehler passiert
+const Documentviewer = ({ name, url, type, ...props }) => (
+  <div {...props}>
+    <object
+      className={styles.main}
+      data={url}
+      type={type}
+    >
+      <ErrorMessage name={name} url={url} />
     </object>
   </div>
 );
 
 Documentviewer.propTypes = {
+  name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  width: PropTypes.string,
-  height: PropTypes.string,
-};
-
-Documentviewer.defaultProps = {
-  width: '100%',
-  height: '100%',
 };
 
 export default Documentviewer;
