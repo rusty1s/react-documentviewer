@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Grid } from 'react-pattern-library';
+import { Box, Title, SubTitle, Grid, Button } from 'react-pattern-library';
 
 import Documentviewer from '../src';
+
+import styles from './app.css';
 
 class App extends Component {
   state = {
@@ -51,16 +53,25 @@ class App extends Component {
     const { name, url, type } = this.state;
 
     return (
-      <div>
-        <Grid>
-          <Button onClick={this.showPdf} text="Show PDF" />
-          <Button onClick={this.showPng} text="Show PNG" />
-          <Button onClick={this.showHtml} text="Show HTML" />
-          <Button onClick={this.showText} text="Show TEXT" />
-          <Button onClick={this.showSvg} text="Show SVG" />
-          <Button onClick={this.showZip} text="Show ZIP" />
-        </Grid>
-        { url ? <Documentviewer name={name} url={url} type={type} /> : null }
+      <div className={styles.main}>
+        <Box className={styles.buttons}>
+          <Title text="Documentviewer" />
+          <SubTitle text="Please choose a document" />
+          <Grid>
+            <Button onClick={this.showPdf} text="Show PDF" />
+            <Button onClick={this.showPng} text="Show PNG" />
+            <Button onClick={this.showHtml} text="Show HTML" />
+            <Button onClick={this.showText} text="Show TEXT" />
+            <Button onClick={this.showSvg} text="Show SVG" />
+            <Button onClick={this.showZip} text="Show ZIP" />
+          </Grid>
+        </Box>
+        { url ? <Documentviewer
+          name={name}
+          url={url}
+          type={type}
+          className={styles.viewer}
+        /> : null }
       </div>
     );
   }

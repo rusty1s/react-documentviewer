@@ -1,21 +1,28 @@
 .main {
-  background: #ccc;
+  width: 100%;
+  height: 100%;
+  background: #aaa;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .icon {
-  width: 100px;
-  height: 100px;
-}
-
-.link {
-  color: white;
+  width: 20em;
+  height: 20em;
+  opacity: 0.1;
 }
 
 .text {
   color: white;
 }
 
-.text__link {
-  font-size: 24px;
+.link {
+  color: white;
+
+  &:hover {
+    text-decoration: none;
+  }
 }

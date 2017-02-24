@@ -1,0 +1,15 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.buttons {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.viewer {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
