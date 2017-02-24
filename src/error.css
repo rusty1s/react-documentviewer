@@ -13,6 +13,11 @@
   width: 20em;
   height: 20em;
   opacity: 0.1;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.5;
+  }
 }
 
 .text {
