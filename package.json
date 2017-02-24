@@ -39,14 +39,14 @@
   ],
   "devDependencies": {
     "pre-commit": "^1.1.3",
-    "react-dev-config": "^2.0.0"
+    "react-dev-config": "^2.0.0",
+    "react-pattern-library": "git+https://github.com/rusty1s/react-pattern-library.git"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0",
     "react-dom": "^0.14.0 || ^15.0.0"
   },
   "dependencies": {
-    "classnames": "^2.2.5",
-    "react-pattern-library": "git+https://github.com/rusty1s/react-pattern-library.git"
+    "classnames": "^2.2.5"
   }
 }
