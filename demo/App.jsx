@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import { Button, Grid } from 'react-pattern-library';
 
 import Documentviewer from '../src';
-
-import './app.css';
 
 class App extends Component {
   state = {
@@ -53,16 +52,15 @@ class App extends Component {
 
     return (
       <div>
+        <Grid>
+          <Button onClick={this.showPdf} text="Show PDF" />
+          <Button onClick={this.showPng} text="Show PNG" />
+          <Button onClick={this.showHtml} text="Show HTML" />
+          <Button onClick={this.showText} text="Show TEXT" />
+          <Button onClick={this.showSvg} text="Show SVG" />
+          <Button onClick={this.showZip} text="Show ZIP" />
+        </Grid>
         { url ? <Documentviewer name={name} url={url} type={type} /> : null }
-
-        <div>
-          <button onClick={this.showPdf}>Show PDF</button>
-          <button onClick={this.showPng}>Show PNG</button>
-          <button onClick={this.showHtml}>Show HTML</button>
-          <button onClick={this.showText}>Show TEXT</button>
-          <button onClick={this.showSvg}>Show SVG</button>
-          <button onClick={this.showZip}>Show ZIP</button>
-        </div>
       </div>
     );
   }
