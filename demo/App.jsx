@@ -20,7 +20,7 @@ class App extends Component {
 
   showPng = () => this.setState({
     name: 'png_file',
-    url: 'http://entropymine.com/jason/testbed/mime/png/file.png',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/2000px-Tux.svg.png',
     type: 'image/png',
   });
 
