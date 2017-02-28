@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Box, Title, SubTitle, Grid, Button } from 'react-pattern-library';
 
 import Documentviewer from '../src';
+import NotSupportedError from './NotSupportedError';
 
 import styles from './app.css';
 
@@ -48,7 +49,6 @@ class App extends Component {
     type: 'application/zip',
   });
 
-
   render = () => {
     const { name, url, type } = this.state;
 
@@ -70,7 +70,8 @@ class App extends Component {
           name={name}
           url={url}
           type={type}
-          className={styles.viewer}
+          NotSupportedError={NotSupportedError}
+          style={{ width: '100%', height: '100%' }}
         /> : null }
       </div>
     );

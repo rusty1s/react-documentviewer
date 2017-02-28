@@ -1,8 +1,13 @@
 {
   "name": "react-documentviewer",
   "version": "0.0.1",
-  "description": "",
-  "keywords": [],
+  "description": "React Documentviewer for various mimetypes",
+  "keywords": [
+    "react",
+    "documentviewer",
+    "viewer",
+    "pdf"
+  ],
   "bugs": {
     "url": "https://github.com/rusty1s/react-documentviewer/issues",
     "email": "matthias.fey@tu-dortmund.de"
@@ -15,7 +20,7 @@
   "files": [
     "src"
   ],
-  "main": "src/index.jsx",
+  "main": "dist/src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/rusty1s/react-documentviewer"
@@ -30,23 +35,24 @@
     "lint:css": "react-dev-config lint css",
     "lint": "npm-run-all lint:*",
     "start": "react-dev-config start",
+    "transpile": "react-dev-config transpile src/index.jsx",
     "test": "react-dev-config test",
     "test:watch": "npm test -- --watch"
   },
   "pre-commit": [
     "lint",
-    "test"
+    "test",
+    "transpile"
   ],
   "devDependencies": {
+    "enzyme": "^2.7.1",
     "pre-commit": "^1.1.3",
-    "react-dev-config": "^2.0.0",
+    "react-dev-config": "^2.1.1",
     "react-pattern-library": "git+https://github.com/rusty1s/react-pattern-library.git"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0",
     "react-dom": "^0.14.0 || ^15.0.0"
   },
-  "dependencies": {
-    "classnames": "^2.2.5"
-  }
+  "dependencies": {}
 }
