@@ -1,9 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import cx from 'classnames';
-
-import ErrorMessage from './Error';
-
-import styles from './documentviewer.css';
 
 class Documentviewer extends Component {
   componentDidMount() {
@@ -15,32 +10,30 @@ class Documentviewer extends Component {
   }
 
   update() {
-    let error = this.wrapper.innerHTML
-                    .replace(/<\/object>$/, '');
+    // We need to take on a pretty ugly approach by adding the <object> tag by
+    // modifying the innerHTML of our wrapper. Otherwise specific browsers
+    // don't update their visual look if properties change.
 
-    if (error.match(/^<object/)) error = error.slice(error.indexOf('>') + 1);
+    // First, remove the object tags on both sides.
+    const error = this.wrapper.innerHTML
+      .replace(/^<object[^>]*>/, '')
+      .replace(/<\/object>$/, '');
 
-    const { url, type } = this.props;
-    const obj = `<object data="${url}" type="${type}">${error}</object>`;
-    this.wrapper.innerHTML = obj;
+    // Then create a new object tag.
+    this.wrapper.innerHTML = '<object ' +
+      `data="${this.props.url}" ` +
+      `type="${this.props.type}" ` +
+      'style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain" ' +
+    `>${error}</object>`;
   }
 
   render() {
-    const { name, url, className, errorText, errorLink, ...props } = this.props;
-    delete props.type;
+    const { name, url, type, NotSupportedError, style, ...props } = this.props;
+    const styles = Object.assign({}, style, { position: 'relative' });
 
     return (
-      <div
-        className={cx(className, styles.main)}
-        {...props}
-        ref={(wrapper) => { this.wrapper = wrapper; }}
-      >
-        <ErrorMessage
-          name={name}
-          url={url}
-          text={errorText}
-          link={errorLink}
-        />
+      <div style={styles} ref={(w) => { this.wrapper = w; }} {...props}>
+        <NotSupportedError name={name} url={url} type={type} />
       </div>
     );
   }
@@ -50,15 +43,13 @@ Documentviewer.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  errorText: PropTypes.string,
-  errorLink: PropTypes.string,
+  NotSupportedError: PropTypes.func.isRequired,
+  style: PropTypes.objectOf(PropTypes.any),
 };
 
 Documentviewer.defaultProps = {
-  className: null,
-  errorText: 'Document can\'t be displayed.',
-  errorLink: 'Please download it here.',
+  style: {},
 };
+
 
 export default Documentviewer;
