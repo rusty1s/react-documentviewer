@@ -18,7 +18,7 @@
     "email": "matthias.fey@tu-dortmund.de"
   },
   "files": [
-    "src"
+    "dist"
   ],
   "main": "dist/src/index.js",
   "repository": {
