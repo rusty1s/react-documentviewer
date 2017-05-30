@@ -33,7 +33,7 @@ class Documentviewer extends Component {
 
     return (
       <div style={styles} ref={(w) => { this.wrapper = w; }} {...props}>
-        <NotSupportedError name={name} url={url} type={type} />
+        {NotSupportedError}
       </div>
     );
   }
@@ -43,12 +43,13 @@ Documentviewer.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  NotSupportedError: PropTypes.func.isRequired,
+  NotSupportedError: PropTypes.node,
   style: PropTypes.objectOf(PropTypes.any),
 };
 
 Documentviewer.defaultProps = {
   style: {},
+  NotSupportedError: null,
 };
 
 

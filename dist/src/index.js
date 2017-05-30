@@ -60,7 +60,7 @@ var Documentviewer = function (_Component) {
         _extends({ style: styles, ref: function ref(w) {
             _this2.wrapper = w;
           } }, props),
-        React.createElement(NotSupportedError, { name: name, url: url, type: type })
+        NotSupportedError
       );
     }
   }]);
@@ -72,12 +72,13 @@ Documentviewer.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  NotSupportedError: PropTypes.func.isRequired,
+  NotSupportedError: PropTypes.node,
   style: PropTypes.objectOf(PropTypes.any)
 };
 
 Documentviewer.defaultProps = {
-  style: {}
+  style: {},
+  NotSupportedError: null
 };
 
 export default Documentviewer;

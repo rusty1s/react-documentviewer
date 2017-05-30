@@ -70,7 +70,7 @@ class App extends Component {
           name={name}
           url={url}
           type={type}
-          NotSupportedError={NotSupportedError}
+          NotSupportedError={<NotSupportedError name={name} url={url} />}
           style={{ width: '100%', height: '100%' }}
         /> : null }
       </div>
