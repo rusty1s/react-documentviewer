@@ -12,55 +12,80 @@ var Documentviewer = function (_Component) {
   _inherits(Documentviewer, _Component);
 
   function Documentviewer() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, Documentviewer);
 
-    return _possibleConstructorReturn(this, (Documentviewer.__proto__ || _Object$getPrototypeOf(Documentviewer)).apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Documentviewer.__proto__ || _Object$getPrototypeOf(Documentviewer)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      hidden: false
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Documentviewer, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.update();
+      var _this2 = this;
+
+      this.setState({ hidden: true }, function () {
+        return _this2.setState({ hidden: false });
+      });
     }
   }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      this.update();
-    }
-  }, {
-    key: 'update',
-    value: function update() {
-      // We need to take on a pretty ugly approach by adding the <object> tag by
-      // modifying the innerHTML of our wrapper. Otherwise specific browsers
-      // don't update their visual look if properties change.
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps() {
+      var _this3 = this;
 
-      // First, remove the object tags on both sides.
-      var error = this.wrapper.innerHTML.replace(/^<object[^>]*>/, '').replace(/<\/object>$/, '');
-
-      // Then create a new object tag.
-      this.wrapper.innerHTML = '<object ' + ('data="' + this.props.url + '" ') + ('type="' + this.props.type + '" ') + 'style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain" ' + ('>' + error + '</object>');
+      this.setState({ hidden: true }, function () {
+        return _this3.setState({ hidden: false });
+      });
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _this4 = this;
 
       var _props = this.props,
-          name = _props.name,
+          style = _props.style,
           url = _props.url,
           type = _props.type,
           NotSupportedError = _props.NotSupportedError,
-          style = _props.style,
-          props = _objectWithoutProperties(_props, ['name', 'url', 'type', 'NotSupportedError', 'style']);
+          props = _objectWithoutProperties(_props, ['style', 'url', 'type', 'NotSupportedError']);
 
-      var styles = _Object$assign({}, style, { position: 'relative' });
+      var wrapperStyles = _Object$assign({}, style, { position: 'relative' });
+
+      var objectStyles = {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'contain'
+      };
+
+      if (this.state.hidden) {
+        console.log('drin');return null;
+      }
 
       return React.createElement(
         'div',
-        _extends({ style: styles, ref: function ref(w) {
-            _this2.wrapper = w;
+        _extends({ style: wrapperStyles, ref: function ref(w) {
+            _this4.wrapper = w;
           } }, props),
-        NotSupportedError
+        React.createElement(
+          'object',
+          {
+            data: url,
+            type: type,
+            style: objectStyles
+          },
+          NotSupportedError
+        )
       );
     }
   }]);
@@ -69,7 +94,6 @@ var Documentviewer = function (_Component) {
 }(Component);
 
 Documentviewer.propTypes = {
-  name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   NotSupportedError: PropTypes.node,

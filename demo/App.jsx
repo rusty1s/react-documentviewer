@@ -66,13 +66,13 @@ class App extends Component {
             <Button onClick={this.showZip} text="Show ZIP" />
           </Grid>
         </Box>
-        { url ? <Documentviewer
+        { url && <Documentviewer
           name={name}
           url={url}
           type={type}
           NotSupportedError={<NotSupportedError name={name} url={url} />}
           style={{ width: '100%', height: '100%' }}
-        /> : null }
+        /> }
       </div>
     );
   }
